@@ -10,6 +10,7 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import { requireJwt , clearCookie } from './authentication/auth.js'
 import User from "./models/User.js";
+import { log } from "console";
 
 
 dotenv.config();
@@ -61,9 +62,20 @@ app.get('/signout', clearCookie ,(req,res) => {
 
 app.get('/:email' , requireJwt , async (req,res) => {
   const {email} = req.params;
+  console.log('this is Email ========== > ' , email);
+  
   const user = await User.findOne({email : email})
-  res.render('user' , {user})
+  console.log('this is User ========== > ' , user);
+  const title = req.query.title;
+  console.log('this is title ========== > ' , title);
+  let foundNote = {};
+  if(title){
+    foundNote = user.notes.find( i =>  i.title === title )
+    console.log('this is foundNote ========== > ' , foundNote);
+  }
+  res.render('user' , {user , foundNote})
 })
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

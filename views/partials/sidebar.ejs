@@ -14,20 +14,18 @@
   <div
     class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom"
   >
-    <svg class="bi me-2" width="30" height="24">
-      <use xlink:href="#bootstrap"></use>
-    </svg>
-    <span class="fs-5 fw-semibold">Archive</span>
+    <span class="fs-5 fw-bold">Archive</span>
     <% user.notes.forEach( (i) =>{ %>
   </div>
   <div class="list-group list-group-flush border-bottom scrollarea">
     <a
-      href="#"
+      href="/<%= user.email %>?title=<%= i.title %>"
       class="list-group-item list-group-item-action py-3 lh-tight"
       aria-current="true"
     >
       <div class="d-flex w-100 align-items-center justify-content-between">
         <strong class="mb-1"><%= i.title %></strong>
+        <button type="button" class="btn-close" aria-label="Close"></button>
       </div>
     </a>
     <% }) %>

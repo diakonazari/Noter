@@ -37,7 +37,6 @@ router.post('/noting' , async(req,res) => {
       note : req.body.note
     }
     const payload = jwt.verify(req.cookies.access_token, process.env.JWT_SECRET);
-    console.log(payload);
     
     const email = payload.email;
     await User.findOneAndUpdate({email} , {$push: {notes : noteData}})
