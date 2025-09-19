@@ -13,6 +13,7 @@ router.post("/signup", async (req, res) => {
       email: req.body.email,
       password: await bcrypt.hash(req.body.password, 10),
     };
+    
     const user = new User(userEntry);
     await user.save();
     res.status(201).json({ message: "User created!" });

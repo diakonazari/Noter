@@ -56,17 +56,13 @@ export const tokenGeneration = (req, res, next) => {
       JWT_SECRET
     );
     return (
-      // res.cookie('access_token', token, {
-      //     httpOnly: true,
-      //     secure : false,
-      //     sameSite  : 'Lax',
-      //     path : '/'
-      // })
-      res.json({
-        token,
-        token_type: "Bearer",
-        user,
+      res.cookie('access_token', token, {
+          httpOnly: true,
+          secure : false,
+          sameSite  : 'Lax',
+          path : '/'
       })
+      .redirect(`/${user.email}`)
     );
   })(req, res, next);
 };
