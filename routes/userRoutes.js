@@ -17,6 +17,9 @@ router.post("/signup", async (req, res) => {
     await user.save();
     res.status(201).json({ message: "User created!" });
   } catch (err) {
+    if(err?.code === 11000) {
+      return res.redirect('/duplicateUser')
+    }
     console.error("Error creating user : ", err);
     res.status(500).json({ error: err.message });
   }
