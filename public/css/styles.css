@@ -1,0 +1,34 @@
+.logo-div{
+display: flex;
+width: fit-content;
+justify-content: flex-start;
+}
+
+.nav-div{
+display: inline-flex;
+width : 100%;
+height: 80px;
+background-color: #fff3cd;
+justify-content: space-between;
+}
+
+.signout-button{
+    margin : 20px;
+}
+
+.logo{
+    margin-left: 10px;
+    height: 70px;
+    width: 70px;
+}
+
+.notes-form{
+    background-color: #ac9287 ;
+    margin-left: 100px;
+    margin-top: 20px;
+    border: 2px black solid;
+    border-radius: 20px;
+    padding: 20px;
+    min-height: 80vh;
+    width: 55vw;
+}

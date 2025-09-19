@@ -8,7 +8,7 @@ import path from 'path';
 import { fileURLToPath } from "url";
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
-import { requireJwt } from './authentication/auth.js'
+import { requireJwt , clearCookie } from './authentication/auth.js'
 import User from "./models/User.js";
 
 
@@ -53,6 +53,10 @@ app.get('/signup', (req,res) => {
 
 app.get('/duplicateUser', (req,res) => {
   res.render('duplicateUser')
+})
+
+app.get('/signout', clearCookie ,(req,res) => {
+  res.render('signout')
 })
 
 app.get('/:email' , requireJwt , async (req,res) => {
