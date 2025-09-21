@@ -10,7 +10,7 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import { requireJwt , clearCookie } from './authentication/auth.js'
 import User from "./models/User.js";
-import { log } from "console";
+import mongoose from "mongoose";
 
 
 dotenv.config();
@@ -62,16 +62,22 @@ app.get('/signout', clearCookie ,(req,res) => {
 
 app.get('/:email' , requireJwt , async (req,res) => {
   const {email} = req.params;
-  console.log('this is Email ========== > ' , email);
+
   
   const user = await User.findOne({email : email})
-  console.log('this is User ========== > ' , user);
-  const title = req.query.title;
-  console.log('this is title ========== > ' , title);
+
+  // Check if user exists
+  if (!user) {
+    console.log('User not found');
+    return res.status(404).send('User not found');
+  }
+
+  const titleId = req.query.titleId;
+
   let foundNote = {};
-  if(title){
-    foundNote = user.notes.find( i =>  i.title === title )
-    console.log('this is foundNote ========== > ' , foundNote);
+  if(titleId){
+    const objectId = new mongoose.Types.ObjectId(titleId);
+    foundNote = user.notes.find( i =>  i._id.equals(objectId))
   }
   res.render('user' , {user , foundNote})
 })
