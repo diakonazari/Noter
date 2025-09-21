@@ -10,19 +10,20 @@
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
     crossorigin="anonymous"
   />
-    <title>Document</title>
+    <title>NOTER</title>
 </head>
 
-<body>
-    <header>
-        <%- include('partials/navbar') %>
+<body style="background-color:#aabbff;" >
+    <header style="display: flex ; flex-direction: column; align-items: center" >
+        <%- include('partials/navbar',{activePage : 'user'}) %>
         <h1> Welcome <%= user.firstName %></h1>
     </header>
-
+    <% if (user.notes.length !== 0) { %>
     <main style="display: inline-flex;">
-        <% if (user.notes.length !== 0) { %>
             <%- include('partials/sidebar') %>
-        <% } %>
+        <% } else { %>
+          <main style="display: flex; justify-content: center;">
+         <% } %>
        <form action="<%= foundNote._id ? ('/api/noting?titleId='+foundNote._id) : '/api/noting' %>" method="POST" class="notes-form">
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Title</label>

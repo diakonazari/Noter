@@ -3,23 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="/css/styles.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
-    <title>Document</title>
+    <title>Sign Up</title>
   </head>
-  <body>
-    <header>
-      <h1>Sign Up!</h1>
+  <body style="background-color:#aabbff;">
+    <header style="display: flex ; flex-direction: column; align-items: center">
+      <%- include('partials/navbar',{activePage : 'signup'})  %>
+  
+      <h1 style="margin: 40px;" >Sign Up!</h1>
+
     </header>
-    <main>
-      <form action="/api/signup" method="POST">
+    <main style="display: flex; justify-content: center">
+      <form
+        action="/api/signup"
+        method="POST"
+        style="
+          width: 30vw;
+          height: fit-content;
+          padding: 20px;
+          background-color: #fff3cd;
+          border: 5px solid #48182b;
+          border-radius: 20px;
+        "
+      >
         <legend>Please fill out the form below to sign up :</legend>
-        <div class="row">
+        <div style="display: grid; grid-column: 5; grid-gap: 30px">
           <div class="col">
             <input
               type="text"
@@ -38,8 +52,6 @@
               aria-label="Last name"
             />
           </div>
-        </div>
-        <div class="row">
           <div class="col">
             <input
               type="text"
@@ -49,6 +61,7 @@
               aria-label="First name"
             />
           </div>
+
           <div class="col">
             <input
               type="text"
@@ -57,15 +70,17 @@
               placeholder="Password"
               aria-label="Last name"
             />
+
             <div>
               <span id="passwordHelpInline" class="form-text">
                 Must more than 5 characters long.
               </span>
             </div>
           </div>
-        </div>
-        <div class="col-12">
-          <button class="btn btn-primary" type="submit">Submit</button>
+
+          <div class="col-12">
+            <button class="btn btn-primary" type="submit">Submit</button>
+          </div>
         </div>
       </form>
     </main>

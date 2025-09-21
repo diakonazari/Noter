@@ -10,15 +10,26 @@
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
-    <title>Document</title>
+    <title>Login</title>
   </head>
-  <body>
-    <header>
-      <h1>login</h1>
+  <body style="background-color:#aabbff;">
+    <header style="display: flex ; flex-direction: column; align-items: center">
+      <%- include('partials/navbar', {activePage : 'login'})  %>
+
+      <h1 style="margin: 40px;" >Login</h1>
+
     </header>
-    <main>
-      <form action="/api/login" method="POST">
+    <main  style="display: flex; justify-content: center" >
+      <form action="/api/login" method="POST"  style="
+      width: 30vw;
+      height: fit-content;
+      padding: 20px;
+      background-color: #fff3cd;
+      border: 5px solid #48182b;
+      border-radius: 20px;
+    ">
         <legend>Please enter your Email and Password to login</legend>
+        <div style="display: grid; grid-column: 5; grid-gap: 30px" >
         <div class="row">
           <div class="col">
             <input
@@ -42,6 +53,7 @@
         <div class="col-12">
           <button class="btn btn-primary" type="submit">Submit</button>
         </div>
+      </div>
       </form>
     </main>
 
