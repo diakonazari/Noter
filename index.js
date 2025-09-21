@@ -66,7 +66,7 @@ app.get('/:email' , requireJwt , async (req,res) => {
   
   const user = await User.findOne({email : email})
 
-  // Check if user exists
+
   if (!user) {
     console.log('User not found');
     return res.status(404).send('User not found');
